@@ -22,6 +22,9 @@ func (genericBuffer *GenericBuffer[T]) Append(data []T) {
 }
 
 func (genericBuffer *GenericBuffer[T]) Next(n int) []T {
+	if n <= 0 {
+		return nil
+	}
 	if n > len(genericBuffer.data) {
 		n = len(genericBuffer.data)
 	}
@@ -34,6 +37,9 @@ func (genericBuffer *GenericBuffer[T]) Next(n int) []T {
 }
 
 func (genericBuffer *GenericBuffer[T]) Skip(n int) {
+	if n <= 0 {
+		return
+	}
 	if n > len(genericBuffer.data) {
 		n = len(genericBuffer.data)
 	}
@@ -43,6 +49,9 @@ func (genericBuffer *GenericBuffer[T]) Skip(n int) {
 }
 
 func (genericBuffer *GenericBuffer[T]) Peek(n int) []T {
+	if n <= 0 {
+		return nil
+	}
 	if n > len(genericBuffer.data) {
 		n = len(genericBuffer.data)
 	}
